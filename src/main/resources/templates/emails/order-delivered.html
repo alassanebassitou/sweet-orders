@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #FDF8F4; }
+        .container { max-width: 600px; margin: 30px auto; background: #fff;
+                     border-radius: 12px; overflow: hidden; }
+        .header { background: #6BAE75; padding: 30px; text-align: center; }
+        .header h1 { color: white; margin: 0; }
+        .body { padding: 30px; }
+        .btn { display: block; width: fit-content; margin: 25px auto;
+               background: #C97B5A; color: white; padding: 14px 30px;
+               border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .footer { text-align: center; padding: 20px; color: #aaa; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>✅ Commande livrée !</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${clientPrenom}">Prénom</strong>,</p>
+        <p>Votre commande <strong th:text="${numeroCommande}">CMD-XXX</strong>
+            a été livrée avec succès. Merci pour votre confiance !</p>
+        <p>Votre avis compte beaucoup pour nous. N'hésitez pas à noter
+            votre expérience sur notre application.</p>
+        <a th:href="${appUrl + '/app/commandes/' + commandeId}"
+           class="btn">Laisser un avis</a>
+    </div>
+    <div class="footer">
+        <p th:text="${appName}">Sweet Orders</p>
+    </div>
+</div>
+</body>
+</html>

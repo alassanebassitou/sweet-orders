@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #FDF8F4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 30px auto; background: #fff;
+                     border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header { background: #C97B5A; padding: 30px; text-align: center; }
+        .header h1 { color: white; margin: 0; font-size: 24px; }
+        .body { padding: 30px; }
+        .info-row { display: flex; justify-content: space-between;
+                    padding: 10px 0; border-bottom: 1px solid #f0e8e0; }
+        .info-label { color: #888; font-size: 14px; }
+        .info-value { font-weight: bold; color: #3D2B1F; }
+        .btn { display: block; width: fit-content; margin: 25px auto;
+               background: #C97B5A; color: white; padding: 14px 30px;
+               border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .footer { text-align: center; padding: 20px; color: #aaa; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🎂 Commande confirmée !</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${clientPrenom}">Prénom</strong>,</p>
+        <p>Votre commande a bien été confirmée. Voici le récapitulatif :</p>
+
+        <div class="info-row">
+            <span class="info-label">Numéro de commande</span>
+            <span class="info-value" th:text="${numeroCommande}">CMD-XXX</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Date de livraison</span>
+            <span class="info-value" th:text="${dateLivraison}">01/01/2026</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Montant total</span>
+            <span class="info-value" th:text="${montantTotal + ' FCFA'}">15000 FCFA</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Acompte requis</span>
+            <span class="info-value" th:text="${acompteRequis + ' FCFA'}">7500 FCFA</span>
+        </div>
+
+        <p style="margin-top:20px; color:#666;">
+            Vous pouvez suivre votre commande en temps réel sur notre application.
+        </p>
+
+        <a th:href="${appUrl + '/app/commandes/' + commandeId}"
+           class="btn">Voir ma commande</a>
+    </div>
+    <div class="footer">
+        <p th:text="${appName}">Sweet Orders</p>
+        <p>Merci pour votre confiance 🎂</p>
+    </div>
+</div>
+</body>
+</html>

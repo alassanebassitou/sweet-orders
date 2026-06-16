@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #FDF8F4; }
+        .container { max-width: 600px; margin: 30px auto; background: #fff;
+                     border-radius: 12px; overflow: hidden; }
+        .header { background: #D64045; padding: 30px; text-align: center; }
+        .header h1 { color: white; margin: 0; }
+        .body { padding: 30px; }
+        .btn { display: block; width: fit-content; margin: 25px auto;
+               background: #C97B5A; color: white; padding: 14px 30px;
+               border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .footer { text-align: center; padding: 20px; color: #aaa; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🔔 Votre commande nous manque !</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${clientPrenom}">Prénom</strong>,</p>
+        <p>Nous avons remarqué que votre commande
+            <strong th:text="${numeroCommande}">CMD-XXX</strong>
+            a été annulée.</p>
+        <p>Nous serions ravis de vous accueillir à nouveau.
+            N'hésitez pas à passer une nouvelle commande — nos gâteaux
+            vous attendent ! 🎂</p>
+        <a th:href="${appUrl + '/app/catalogue'}"
+           class="btn">Voir le catalogue</a>
+    </div>
+    <div class="footer">
+        <p th:text="${appName}">Sweet Orders</p>
+    </div>
+</div>
+</body>
+</html>

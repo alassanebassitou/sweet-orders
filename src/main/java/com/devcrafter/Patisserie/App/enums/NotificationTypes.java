@@ -1,0 +1,15 @@
+package com.devcrafter.Patisserie.App.enums;
+
+public enum NotificationTypes {
+    MISSING_DEPOSIT,
+    UNPAID,
+    CUSTOMER_BIRTHDAY,
+    DELIVERY_TOMORROW,
+    PRODUCTION_OVERLOAD,
+    DELIVERY_FAILED,
+    NEW_ORDER,
+    ORDER_READY,
+    DELIVERY_FEES_NOT_APPLIED,
+    DELIVERY_FEES_APPLIED,
+    STATUS_CHANGED
+}

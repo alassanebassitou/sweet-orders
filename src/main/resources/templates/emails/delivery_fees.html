@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #FDF8F4; }
+        .container { max-width: 580px; margin: 30px auto;
+                     background: #fff; border-radius: 12px;
+                     overflow: hidden; }
+        .header { background: #C97B5A; padding: 28px;
+                  text-align: center; }
+        .header h1 { color: white; margin: 0; font-size: 20px; }
+        .body { padding: 30px; }
+        .fee-box { background: #FDF8F4; border: 2px solid #C97B5A;
+                   border-radius: 10px; padding: 20px;
+                   text-align: center; margin: 20px 0; }
+        .fee-amount { font-size: 36px; font-weight: bold;
+                      color: #C97B5A; }
+        .btn { display: block; width: fit-content;
+               margin: 24px auto; background: #C97B5A;
+               color: white; padding: 14px 32px;
+               border-radius: 8px; text-decoration: none;
+               font-weight: bold; font-size: 15px; }
+        .footer { text-align: center; padding: 20px;
+                  color: #aaa; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🚚 Frais de livraison définis</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${clientPrenom}">Prénom</strong>,</p>
+        <p>
+            Les frais de livraison pour votre quartier
+            <strong th:text="${quartier}">Quartier</strong>
+            (<span th:text="${ville}">Ville</span>) ont été définis
+            pour votre commande
+            <strong th:text="${numeroCommande}">CMD-XXX</strong> :
+        </p>
+
+        <div class="fee-box">
+            <p style="margin:0; color:#666; font-size:14px;">
+                Frais de livraison
+            </p>
+            <div class="fee-amount"
+                 th:text="${#numbers.formatDecimal(fraisLivraison, 0, 'COMMA', 0, 'POINT') + ' FCFA'}">
+                1 500 FCFA
+            </div>
+        </div>
+
+        <p style="color:#666; font-size:14px;">
+            Vous pouvez régler ces frais directement depuis
+            votre espace commande en cliquant sur le bouton
+            ci-dessous.
+        </p>
+
+        <a th:href="${appUrl + '/app/commandes/' + commandeId}"
+           class="btn">
+            💳 Payer les frais de livraison
+        </a>
+
+        <p style="color:#999; font-size:12px; text-align:center;">
+            Si vous avez des questions, contactez-nous
+            sur WhatsApp.
+        </p>
+    </div>
+    <div class="footer">
+        <p th:text="${appName}">Sweet Orders</p>
+    </div>
+</div>
+</body>
+</html>

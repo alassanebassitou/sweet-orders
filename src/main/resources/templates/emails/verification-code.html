@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background: #FDF8F4; }
+        .container { max-width: 500px; margin: 30px auto;
+                     background: #fff; border-radius: 12px;
+                     overflow: hidden; }
+        .header { background: #C97B5A; padding: 30px;
+                  text-align: center; }
+        .header h1 { color: white; margin: 0; font-size: 22px; }
+        .body { padding: 30px; text-align: center; }
+        .code { font-size: 42px; font-weight: bold;
+                letter-spacing: 12px; color: #C97B5A;
+                background: #FDF8F4; padding: 20px 30px;
+                border-radius: 12px; margin: 20px auto;
+                display: inline-block; border: 2px dashed #C97B5A; }
+        .expire { color: #888; font-size: 13px; margin-top: 15px; }
+        .footer { text-align: center; padding: 20px;
+                  color: #aaa; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🎂 Connexion à <span th:text="${appName}">Sweet Orders</span></h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${prenom}">Prénom</strong> 👋</p>
+        <p>Voici votre code de vérification :</p>
+        <div class="code" th:text="${code}">123456</div>
+        <p class="expire">
+            Ce code expire dans <strong>10 minutes</strong>.<br>
+            Ne le partagez avec personne.
+        </p>
+        <p style="color:#888; font-size:13px; margin-top:20px;">
+            Si vous n'avez pas demandé ce code, ignorez cet email.
+        </p>
+    </div>
+    <div class="footer">
+        <p th:text="${appName}">Sweet Orders</p>
+    </div>
+</div>
+</body>
+</html>
