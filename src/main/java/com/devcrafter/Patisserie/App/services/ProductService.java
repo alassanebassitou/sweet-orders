@@ -69,8 +69,7 @@ public class ProductService {
     public ProductResponse createProduct(ProductRequest request) {
         Products products = new Products();
 
-        final String catName = request.getCategory();
-        Category category = this.getCategory(catName);
+        Category category = this.getCategory(request.getCategory());
 
         products.setName(request.getName());
         products.setDescription(request.getDescription());
@@ -88,8 +87,8 @@ public class ProductService {
         Products products = findProductOrThrow(id);
 
 
-        final String catName = request.getCategory();
-        Category category = this.getCategory(catName);
+        //final String catName = request.getCategory();
+        Category category = this.getCategory(request.getCategory());
 
         if (request.getName() != null)
             products.setName(request.getName());
@@ -254,8 +253,8 @@ public class ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException(PRODUCT_NOT_FOUND, id));
     }
 
-    private Category getCategory(String name) {
-        return categoryRepository.findByName(name)
+    private Category getCategory(Long catId) {
+        return categoryRepository.findById(catId)
                 .orElseThrow(() -> new BadRequestException("Category is null"));
     }
 
