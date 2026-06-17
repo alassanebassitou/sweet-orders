@@ -43,7 +43,7 @@ public class SessionFilter extends OncePerRequestFilter {
         log.info("Request path: {}", path);
 
         // Skip auth endpoints — they don't need a session yet
-        if (isPublicPath(path)) {
+        if (isPublicPath(request)) {
             chain.doFilter(request, response);
             return;
         }
@@ -113,7 +113,10 @@ public class SessionFilter extends OncePerRequestFilter {
         );
     }
 
-    private boolean isPublicPath(String path) {
+    private boolean isPublicPath(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        String method = request.getMethod();
+
         return path.startsWith("/api/v1/auth/")
                 || path.startsWith("/ws/")
                 || path.equals("/ws")
@@ -124,7 +127,7 @@ public class SessionFilter extends OncePerRequestFilter {
                 || path.startsWith("/v3/api-docs")
                 // Public API routes
                 || path.startsWith("/api/v1/products/")
-                || path.equals("/api/v1/products")
+                || ("GET".equals(method)) && path.equals("/api/v1/products")
                 || path.equals("/api/v1/settings")
                 || path.startsWith("/api/v1/webhooks/")
                 || path.equals("/api/v1/categories/all");
