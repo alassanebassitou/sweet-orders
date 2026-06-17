@@ -1,9 +1,9 @@
 package com.devcrafter.Patisserie.App.security.config;
 
+import com.devcrafter.Patisserie.App.config.CorsProperties;
 import com.devcrafter.Patisserie.App.security.component.SessionFilter;
 import com.devcrafter.Patisserie.App.security.matcher.WholePublicRouteMatcher;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,9 +25,7 @@ public class SecurityConfig {
 
     private final WholePublicRouteMatcher publicRouteMatcher;
     private final SessionFilter filter;
-
-    @Value("${app.cors.allowed-origins}")
-    private List<String> allowedOrigins;
+    private final CorsProperties corsProperties;
 
 
     @Bean
@@ -54,7 +52,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(allowedOrigins);
+        config.setAllowedOrigins(corsProperties.getAllowedOrigins());
         config.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
         ));
