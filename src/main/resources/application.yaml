@@ -71,6 +71,7 @@ app:
       - http://localhost:5173
       - http://localhost:8090
       - ${FRONT_URL}
+      - ${APP_API_URL}
     allowed-methods:
       - GET
       - POST
