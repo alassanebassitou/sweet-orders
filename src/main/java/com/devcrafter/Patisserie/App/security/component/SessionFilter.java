@@ -126,9 +126,9 @@ public class SessionFilter extends OncePerRequestFilter {
                 // OpenAPI spec
                 || path.startsWith("/v3/api-docs")
                 // Public API routes
-                || path.startsWith("/api/v1/products/")
+                || ("GET".equals(method)) && path.startsWith("/api/v1/products/")
                 || ("GET".equals(method)) && path.equals("/api/v1/products")
-                || path.equals("/api/v1/settings")
+                || ("GET".equals(method)) && path.equals("/api/v1/settings")
                 || path.startsWith("/api/v1/webhooks/")
                 || path.equals("/api/v1/categories/all");
     }
