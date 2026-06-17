@@ -67,6 +67,8 @@ app:
   cors:
     allowed-origins:
       - http://localhost:3000
+      - http://localhost:5173
+      - http://localhost:8090
       - ${FRONT_URL}
     allowed-methods:
       - GET
@@ -78,6 +80,9 @@ app:
     allowed-headers: "*"
     exposed-headers: "*"
     allow-credentials: true
+
+  swagger:
+    api-url: ${APP_API_URL}
 
   kkiapay:
     public-key: ${KKIAPAY_PUBLIC_KEY}
