@@ -90,7 +90,7 @@ public class AdminResource {
             @ApiResponse(responseCode = "200", description = "Utilisateur désactivé"),
             @ApiResponse(responseCode = "404", description = "Utilisateur introuvable")
     })
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/users/{id}/deactivate")
     public ResponseEntity<UserResponse> deactivateUser(
             @Parameter(description = "ID de l'utilisateur") @PathVariable Long id,
             HttpServletRequest request) {
@@ -100,7 +100,7 @@ public class AdminResource {
 
     @Operation(summary = "Réactiver un utilisateur")
     @ApiResponse(responseCode = "200", description = "Utilisateur réactivé")
-    @PatchMapping("/{id}/activate")
+    @PatchMapping("/users/{id}/activate")
     public ResponseEntity<UserResponse> activateUser(
             @Parameter(description = "ID de l'utilisateur") @PathVariable Long id) {
         return ResponseEntity.ok(userService.activateUser(id));
