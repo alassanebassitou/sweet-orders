@@ -41,72 +41,90 @@ spring:
   servlet:
     multipart:
       enabled: true
-      max-file-size: 5MB
-      max-request-size: 20MB
-
-app:
-  google:
-    client-id: ${GOOGLE_CLIENT_ID}
-  session:
-    ttl-hours: 8
-    header-name: X-Session-Id
-
-  cors:
-    allowed-origins:
-      - http://localhost:3000
-      - http://localhost:5173
-      - http://localhost:8090
-      - ${FRONT_URL}
-      - ${APP_API_URL}
-    allowed-methods:
-      - GET
-      - POST
-      - PUT
-      - DELETE
-      - OPTIONS
-      - PATCH
-    allowed-headers: "*"
-    exposed-headers: "*"
-    allow-credentials: true
-
-  swagger:
-    api-url: ${APP_API_URL}
-
-  kkiapay:
-    public-key: ${KKIAPAY_PUBLIC_KEY}
-    private-key: ${KKIAPAY_PRIVATE_KEY}
-    secret-key: ${KKIAPAY_SECRET_KEY}
-    sandbox: true
-    base-url: ${KKIAPAY_BASE_URL:https://api-sandbox.kkiapay.me}
-
-  cloudinary:
-    cloud-name: ${CLOUDINARY_CLOUD_NAME}
-    api-key: ${CLOUDINARY_API_KEY}
-    api-secret: ${CLOUDINARY_API_SECRET}
-    folders:
-      products: sweet-orders/products
-      categories: sweet-orders/categories
+      max-file-size: 5MB      # max per file
+      max-request-size: 20MB # max total request
 
   mail:
-    from: ${RESEND_NAME}
-    from-name: "Ma Pâtisserie"
-    app-url: ${FRONT_URL}
-    app-name: "Sweet Orders"
+    host: smtp.gmail.com #smtp.resend.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_USER_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+        debug: false
 
-  resend:
-    api-key: ${RESEND_API_KEY}
+  app:
+    google:
+      client-id: ${GOOGLE_CLIENT_ID}
+    session:
+      ttl-hours: 8
+      header-name: X-Session-Id
 
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
-    display-request-duration: true
-    try-it-out-enabled: true
+    cors:
+      allowed-origins:
+        - http://localhost:3000
+        - http://localhost:5173
+        - http://localhost:8090
+        - ${FRONT_URL}
+        - ${APP_API_URL}
+      allowed-methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+        - PATCH
+      allowed-headers: "*"
+      exposed-headers: "*"
+      allow-credentials: true
 
-logging:
-  level:
-    org.springframework.security: TRACE
-    com.devcrafter.Patisserie.App: DEBUG
+    swagger:
+      api-url: ${APP_API_URL}
+
+    kkiapay:
+      public-key: ${KKIAPAY_PUBLIC_KEY}
+      private-key: ${KKIAPAY_PRIVATE_KEY}
+      secret-key: ${KKIAPAY_SECRET_KEY}
+      sandbox: true
+      base-url: ${KKIAPAY_BASE_URL:https://api-sandbox.kkiapay.me}
+
+    cloudinary:
+      cloud-name: ${CLOUDINARY_CLOUD_NAME}
+      api-key: ${CLOUDINARY_API_KEY}
+      api-secret: ${CLOUDINARY_API_SECRET}
+      # Folder structure in Cloudinary
+      folders:
+        products: sweet-orders/products
+        categories: sweet-orders/categories
+
+
+    mail:
+      from: ${MAIL_USERNAME}
+      from-name: "Ma Pâtisserie"
+      app-url: ${FRONT_URL}
+      app-name: "Sweet Orders"
+
+
+  springdoc:
+    api-docs:
+      path: /v3/api-docs
+    swagger-ui:
+      path: /swagger-ui.html
+      tags-sorter: alpha
+      operations-sorter: alpha
+      display-request-duration: true
+      try-it-out-enabled: true
+
+  logging:
+    level:
+      #org.springframework.security: DEBUG
+      org.springframework.security: TRACE
+      com.devcrafter.Patisserie.App: DEBUG

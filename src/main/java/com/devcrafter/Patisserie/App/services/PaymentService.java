@@ -22,8 +22,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @Service
@@ -32,7 +30,7 @@ public class PaymentService {
 
     private final PaymentsRepository paymentsRepository;
     private final CommandeRepository commandeRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithResend emailService;
     private final PDFHelperTools pdfHelperTools;
 
     /**

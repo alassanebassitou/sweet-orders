@@ -2,7 +2,7 @@ package com.devcrafter.Patisserie.App.security.component;
 
 import com.devcrafter.Patisserie.App.models.Commande;
 import com.devcrafter.Patisserie.App.repository.CommandeRepository;
-import com.devcrafter.Patisserie.App.services.EmailService;
+import com.devcrafter.Patisserie.App.services.EmailServiceWithResend;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,7 +17,7 @@ import java.util.List;
 public class RelanceScheduler {
 
     private final CommandeRepository commandeRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithResend emailService;
 
     /**
      * Runs every 30 minutes.
