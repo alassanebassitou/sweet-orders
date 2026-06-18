@@ -61,70 +61,70 @@ spring:
           writetimeout: 5000
         debug: false
 
-  app:
-    google:
-      client-id: ${GOOGLE_CLIENT_ID}
-    session:
-      ttl-hours: 8
-      header-name: X-Session-Id
+app:
+  google:
+    client-id: ${GOOGLE_CLIENT_ID}
+  session:
+    ttl-hours: 8
+    header-name: X-Session-Id
 
-    cors:
-      allowed-origins:
-        - http://localhost:3000
-        - http://localhost:5173
-        - http://localhost:8090
-        - ${FRONT_URL}
-        - ${APP_API_URL}
-      allowed-methods:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - OPTIONS
-        - PATCH
-      allowed-headers: "*"
-      exposed-headers: "*"
-      allow-credentials: true
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:5173
+      - http://localhost:8090
+      - ${FRONT_URL}
+      - ${APP_API_URL}
+    allowed-methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+      - PATCH
+    allowed-headers: "*"
+    exposed-headers: "*"
+    allow-credentials: true
 
-    swagger:
-      api-url: ${APP_API_URL}
+  swagger:
+    api-url: ${APP_API_URL}
 
-    kkiapay:
-      public-key: ${KKIAPAY_PUBLIC_KEY}
-      private-key: ${KKIAPAY_PRIVATE_KEY}
-      secret-key: ${KKIAPAY_SECRET_KEY}
-      sandbox: true
-      base-url: ${KKIAPAY_BASE_URL:https://api-sandbox.kkiapay.me}
+  kkiapay:
+    public-key: ${KKIAPAY_PUBLIC_KEY}
+    private-key: ${KKIAPAY_PRIVATE_KEY}
+    secret-key: ${KKIAPAY_SECRET_KEY}
+    sandbox: true
+    base-url: ${KKIAPAY_BASE_URL:https://api-sandbox.kkiapay.me}
 
-    cloudinary:
-      cloud-name: ${CLOUDINARY_CLOUD_NAME}
-      api-key: ${CLOUDINARY_API_KEY}
-      api-secret: ${CLOUDINARY_API_SECRET}
-      # Folder structure in Cloudinary
-      folders:
-        products: sweet-orders/products
-        categories: sweet-orders/categories
-
-
-    mail:
-      from: ${MAIL_USERNAME}
-      from-name: "Ma Pâtisserie"
-      app-url: ${FRONT_URL}
-      app-name: "Sweet Orders"
+  cloudinary:
+    cloud-name: ${CLOUDINARY_CLOUD_NAME}
+    api-key: ${CLOUDINARY_API_KEY}
+    api-secret: ${CLOUDINARY_API_SECRET}
+    # Folder structure in Cloudinary
+    folders:
+      products: sweet-orders/products
+      categories: sweet-orders/categories
 
 
-  springdoc:
-    api-docs:
-      path: /v3/api-docs
-    swagger-ui:
-      path: /swagger-ui.html
-      tags-sorter: alpha
-      operations-sorter: alpha
-      display-request-duration: true
-      try-it-out-enabled: true
+  mail:
+    from: ${MAIL_USERNAME}
+    from-name: "Ma Pâtisserie"
+    app-url: ${FRONT_URL}
+    app-name: "Sweet Orders"
 
-  logging:
-    level:
-      #org.springframework.security: DEBUG
-      org.springframework.security: TRACE
-      com.devcrafter.Patisserie.App: DEBUG
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    display-request-duration: true
+    try-it-out-enabled: true
+
+logging:
+  level:
+    #org.springframework.security: DEBUG
+    org.springframework.security: TRACE
+    com.devcrafter.Patisserie.App: DEBUG
