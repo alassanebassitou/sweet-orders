@@ -169,7 +169,7 @@ public class EmailService {
 
 
     @Async
-    public void sendFraisLivraisonDefinis(Commande commande, BigDecimal frais) {
+    public void sendDeliveryFeesIsApplied(Commande commande, BigDecimal frais) {
 
         if (!hasEmail(commande)) return;
 

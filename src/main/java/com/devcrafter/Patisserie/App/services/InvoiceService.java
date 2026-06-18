@@ -39,7 +39,7 @@ public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
     private final SettingsRepository settingsRepository;
-    private final EmailServiceWithResend emailService;
+    private final EmailService emailService;
     private final CommandeRepository commandeRepository;
 
     @Value("${app.mail.app-name:Sweet Orders}")

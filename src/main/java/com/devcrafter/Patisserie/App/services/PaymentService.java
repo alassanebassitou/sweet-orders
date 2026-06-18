@@ -30,7 +30,7 @@ public class PaymentService {
 
     private final PaymentsRepository paymentsRepository;
     private final CommandeRepository commandeRepository;
-    private final EmailServiceWithResend emailService;
+    private final EmailService emailService;
     private final PDFHelperTools pdfHelperTools;
 
     /**

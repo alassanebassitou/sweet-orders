@@ -32,7 +32,7 @@ public class CommandeService {
     private final NotificationService notificationService;
     private final PaymentsRepository paymentsRepository;
     private final DeliveryRepository deliveryRepository;
-    private final EmailServiceWithResend emailService;
+    private final EmailService emailService;
     private final DeliveryZoneRepository zoneRepository;
     private final SettingsRepository settingsRepository;
     private final ProductCustomerRepository customerRepository;
