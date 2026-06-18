@@ -6,7 +6,6 @@ import com.devcrafter.Patisserie.App.Exceptions.BusinessException;
 import com.devcrafter.Patisserie.App.dto.request.*;
 import com.devcrafter.Patisserie.App.dto.response.CommandeBalanceResponse;
 import com.devcrafter.Patisserie.App.dto.response.CommandeResponse;
-import com.devcrafter.Patisserie.App.dto.response.ProductCustomizationResponse;
 import com.devcrafter.Patisserie.App.enums.*;
 import com.devcrafter.Patisserie.App.models.*;
 import com.devcrafter.Patisserie.App.repository.*;
@@ -301,7 +300,7 @@ public class CommandeService {
         );
 
         // Send email to client
-        emailService.sendFraisLivraisonDefinis(saved, frais);
+        emailService.sendDeliveryFeesIsApplied(saved, frais);
 
         return buildResponse(saved);
     }
