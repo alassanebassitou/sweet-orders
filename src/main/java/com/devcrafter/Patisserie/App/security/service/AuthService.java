@@ -15,7 +15,7 @@ import com.devcrafter.Patisserie.App.models.VerificationCode;
 import com.devcrafter.Patisserie.App.repository.UserRepository;
 import com.devcrafter.Patisserie.App.repository.VerificationCodesRepository;
 import com.devcrafter.Patisserie.App.security.component.GoogleTokenVerifier;
-import com.devcrafter.Patisserie.App.services.EmailService;
+import com.devcrafter.Patisserie.App.services.EmailServiceWithBrevo;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ public class AuthService {
     private final SessionService sessionService;
     private final UserRepository userRepository;
     private final VerificationCodesRepository codeRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithBrevo emailServiceWithBrevo;
 
 
     public void signUp(SignUpRequest request) {
@@ -87,7 +87,7 @@ public class AuthService {
         vc.setUsed(false);
         codeRepository.save(vc);
 
-        emailService.sendVerificationCode(user, code);
+        emailServiceWithBrevo.sendVerificationCode(user, code);
 
         log.info("Verification code sent to {}", email);
     }

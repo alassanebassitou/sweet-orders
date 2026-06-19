@@ -2,8 +2,7 @@ package com.devcrafter.Patisserie.App.security.component;
 
 import com.devcrafter.Patisserie.App.models.Commande;
 import com.devcrafter.Patisserie.App.repository.CommandeRepository;
-import com.devcrafter.Patisserie.App.services.EmailService;
-import com.devcrafter.Patisserie.App.services.EmailServiceWithResend;
+import com.devcrafter.Patisserie.App.services.EmailServiceWithBrevo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,7 +17,7 @@ import java.util.List;
 public class RelanceScheduler {
 
     private final CommandeRepository commandeRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithBrevo emailServiceWithBrevo;
 
     /**
      * Runs every 30 minutes.
@@ -50,7 +49,7 @@ public class RelanceScheduler {
                             && heuresDepuisAnnulation < 25);
 
             if (shouldSend) {
-                emailService.sendRelance(commande);
+                emailServiceWithBrevo.sendRelance(commande);
                 log.info(
                         "RELANCE sent for order {} " +
                                 "({} hours after cancellation)",

@@ -39,7 +39,7 @@ public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
     private final SettingsRepository settingsRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithBrevo emailServiceWithBrevo;
     private final CommandeRepository commandeRepository;
 
     @Value("${app.mail.app-name:Sweet Orders}")
@@ -155,7 +155,7 @@ public class InvoiceService {
             Invoice saved = invoiceRepository.save(invoice);
 
             // 6. Send by email
-            emailService.sendInvoice(commande, saved, pdfBytes);
+            emailServiceWithBrevo.sendInvoice(commande, saved, pdfBytes);
 
             saved.setEmailSending(true);
             saved.setEmailSendingAt(LocalDateTime.now());

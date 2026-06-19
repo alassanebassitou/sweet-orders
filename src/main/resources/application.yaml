@@ -111,6 +111,7 @@ app:
     from-name: "Ma Pâtisserie"
     app-url: ${FRONT_URL}
     app-name: "Sweet Orders"
+    brevo-key: ${BREVO_API_KEY}
 
 
 springdoc:

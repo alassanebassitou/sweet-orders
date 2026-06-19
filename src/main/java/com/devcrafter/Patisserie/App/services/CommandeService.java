@@ -32,7 +32,7 @@ public class CommandeService {
     private final NotificationService notificationService;
     private final PaymentsRepository paymentsRepository;
     private final DeliveryRepository deliveryRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithBrevo emailServiceWithBrevo;
     private final DeliveryZoneRepository zoneRepository;
     private final SettingsRepository settingsRepository;
     private final ProductCustomerRepository customerRepository;
@@ -300,7 +300,7 @@ public class CommandeService {
         );
 
         // Send email to client
-        emailService.sendDeliveryFeesIsApplied(saved, frais);
+        emailServiceWithBrevo.sendDeliveryFeesIsApplied(saved, frais);
 
         return buildResponse(saved);
     }
@@ -478,10 +478,10 @@ public class CommandeService {
 
         switch (newStat) {
             case CONFIRMED ->
-                    emailService.sendOrderConfirmation(saved);
+                    emailServiceWithBrevo.sendOrderConfirmation(saved);
 
             case DELIVERED ->
-                    emailService.sendOrderDelivered(saved);
+                    emailServiceWithBrevo.sendOrderDelivered(saved);
 
             default -> {}
         }

@@ -30,7 +30,7 @@ public class PaymentService {
 
     private final PaymentsRepository paymentsRepository;
     private final CommandeRepository commandeRepository;
-    private final EmailService emailService;
+    private final EmailServiceWithBrevo emailServiceWithBrevo;
     private final PDFHelperTools pdfHelperTools;
 
     /**
@@ -198,6 +198,6 @@ public class PaymentService {
      * @param commandeId
      */
     public void sendAcompteReminder(Long commandeId) {
-        emailService.sendAcompteReminder(commandeId);
+        emailServiceWithBrevo.sendAcompteReminder(commandeId);
     }
 }
